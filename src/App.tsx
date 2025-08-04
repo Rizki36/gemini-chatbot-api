@@ -100,7 +100,7 @@ function App() {
 
 	return (
 		<div className="flex flex-col h-screen bg-base-200 p-4">
-			<header className="navbar bg-primary text-primary-content rounded-box mb-4">
+			<header className="navbar bg-base-300 text-primary-content rounded-box mb-4">
 				<div className="flex-1">
 					<h1 className="btn btn-ghost normal-case text-xl">
 						Gemini AI Chatbot
