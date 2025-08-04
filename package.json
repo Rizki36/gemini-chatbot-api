@@ -12,7 +12,10 @@
 		"lint": "biome check --write ."
 	},
 	"dependencies": {
+		"@google/generative-ai": "^0.24.1",
 		"bun-plugin-tailwind": "^0.0.15",
+		"dotenv": "^17.2.1",
+		"envalid": "^8.1.0",
 		"react": "^19",
 		"react-dom": "^19",
 		"tailwindcss": "^4.0.6"

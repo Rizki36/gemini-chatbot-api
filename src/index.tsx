@@ -1,21 +1,26 @@
 import { serve } from "bun";
 import index from "./index.html";
+import { handleChat } from "./handlers/textHandler";
+import { commonResponseHeaders } from "./constants";
+
+const BASE_PATH = "./public";
 
 const server = serve({
 	routes: {
-		// Serve index.html for all unmatched routes.
-		"/*": index,
-
+		"/": index,
 		"/api/chat": {
 			async POST(req) {
-				return Response.json({
-					message: "Hello, world!",
-					method: "GET",
-				});
+				const headers = new Headers(commonResponseHeaders);
+
+				return handleChat(req, headers);
 			},
 		},
 	},
-
+	async fetch(req) {
+		const filePath = BASE_PATH + new URL(req.url).pathname;
+		const file = Bun.file(filePath);
+		return new Response(file);
+	},
 	development: process.env.NODE_ENV !== "production" && {
 		// Enable browser hot reloading in development
 		hmr: true,

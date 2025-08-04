@@ -5,16 +5,20 @@
  * It is included in `src/index.html`.
  */
 
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import App from "./App";
+import "./index.css";
 
-function start() {
-	const root = createRoot(document.getElementById("root")!);
-	root.render(<App />);
+// Create root element
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+	throw new Error("Root element not found");
 }
 
-if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", start);
-} else {
-	start();
-}
+// Create root and render app
+createRoot(rootElement).render(
+	<StrictMode>
+		<App />
+	</StrictMode>,
+);
