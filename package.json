@@ -9,6 +9,7 @@
 		"dev": "bun --hot src/index.tsx",
 		"start": "NODE_ENV=production bun src/index.tsx",
 		"build": "bun run build.ts",
+		"build-vercel": "bun-vercel src/index.tsx",
 		"lint": "biome check --write ."
 	},
 	"dependencies": {
@@ -25,6 +26,7 @@
 		"@types/bun": "latest",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
-		"daisyui": "^5.0.50"
+		"daisyui": "^5.0.50",
+		"bun-vercel": "^1.0.0-alpha.4"
 	}
 }
