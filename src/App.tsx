@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./index.css";
-import { ChatMessage } from "./types";
+import type { ChatMessage } from "./types";
 
 function App() {
 	const [messages, setMessages] = useState<ChatMessage[]>([]);

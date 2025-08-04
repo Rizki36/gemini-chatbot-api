@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, Part } from "@google/generative-ai";
+import { GoogleGenerativeAI, type Part } from "@google/generative-ai";
 import env from "../config";
 import { fileToGenerativePart, isSupportedFileType } from "../utils";
 
@@ -20,13 +20,16 @@ export async function handleChat(req: Request, headers: Headers) {
 		}
 
 		if (validationError) {
-			return new Response(JSON.stringify({
-				success: false,
-				error: validationError
-			}), {
-				status: 400,
-				headers: { ...headers, "Content-Type": "application/json" },
-			});
+			return new Response(
+				JSON.stringify({
+					success: false,
+					error: validationError,
+				}),
+				{
+					status: 400,
+					headers: { ...headers, "Content-Type": "application/json" },
+				},
+			);
 		}
 
 		// Select the appropriate model based on whether we have a file
@@ -38,13 +41,16 @@ export async function handleChat(req: Request, headers: Headers) {
 		// Process the file if present
 		if (file) {
 			if (!isSupportedFileType(file.type)) {
-				return new Response(JSON.stringify({
-					success: false,
-					error: `Unsupported file type: ${file.type}`
-				}), {
-					status: 400,
-					headers: { ...headers, "Content-Type": "application/json" },
-				});
+				return new Response(
+					JSON.stringify({
+						success: false,
+						error: `Unsupported file type: ${file.type}`,
+					}),
+					{
+						status: 400,
+						headers: { ...headers, "Content-Type": "application/json" },
+					},
+				);
 			}
 
 			const fileBuffer = Buffer.from(await file.arrayBuffer());
@@ -73,7 +79,8 @@ export async function handleChat(req: Request, headers: Headers) {
 		return new Response(
 			JSON.stringify({
 				success: false,
-				error: error instanceof Error ? error.message : "Unknown error occurred",
+				error:
+					error instanceof Error ? error.message : "Unknown error occurred",
 			}),
 			{
 				status: 500,

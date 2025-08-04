@@ -1,7 +1,7 @@
 import { serve } from "bun";
-import index from "./index.html";
-import { handleChat } from "./handlers/textHandler";
 import { commonResponseHeaders } from "./constants";
+import { handleChat } from "./handlers/textHandler";
+import index from "./index.html";
 
 const BASE_PATH = "./public";
 
