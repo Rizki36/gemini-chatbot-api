@@ -1,6 +1,6 @@
 import { serve } from "bun";
 import { commonResponseHeaders } from "./constants";
-import { handleChat } from "./handlers/textHandler";
+import { handleChat } from "./handlers/handleChat";
 import index from "./index.html";
 
 const BASE_PATH = "./public";
