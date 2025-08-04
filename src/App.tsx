@@ -11,6 +11,7 @@ function App() {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	// Scroll to bottom when messages change
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
 	}, [messages]);
