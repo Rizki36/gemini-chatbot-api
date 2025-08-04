@@ -19,6 +19,11 @@ const server = serve({
 	async fetch(req) {
 		const filePath = BASE_PATH + new URL(req.url).pathname;
 		const file = Bun.file(filePath);
+
+		if (!(await file.exists())) {
+			return new Response("Not Found", { status: 404 });
+		}
+
 		return new Response(file);
 	},
 	development: process.env.NODE_ENV !== "production" && {
@@ -29,3 +34,5 @@ const server = serve({
 		console: true,
 	},
 });
+
+console.log(`Server running at ${server.url}`);
