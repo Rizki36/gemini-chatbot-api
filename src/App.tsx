@@ -2,6 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import "./index.css";
 import type { ChatMessage } from "./types";
 
+// user avatar
+import userAvatar from "./assets/user-avatar.svg";
+// bot avatar
+import botAvatar from "./assets/bot-avatar.svg";
+
 function App() {
 	const [messages, setMessages] = useState<ChatMessage[]>([]);
 	const [inputText, setInputText] = useState("");
@@ -134,11 +139,7 @@ function App() {
 									<div className="chat-image avatar">
 										<div className="w-10 rounded-full">
 											<img
-												src={
-													message.role === "user"
-														? "/user-avatar.svg"
-														: "/bot-avatar.svg"
-												}
+												src={message.role === "user" ? userAvatar : botAvatar}
 												alt={message.role === "user" ? "User" : "Assistant"}
 												className="bg-neutral-content"
 											/>
