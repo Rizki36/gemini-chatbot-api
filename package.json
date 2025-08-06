@@ -9,7 +9,6 @@
 		"dev": "bun --hot src/index.tsx",
 		"start": "NODE_ENV=production bun src/index.tsx",
 		"build": "bun run build.ts",
-		"build-vercel": "bun-vercel src/index.tsx",
 		"lint": "biome check --write ."
 	},
 	"dependencies": {
