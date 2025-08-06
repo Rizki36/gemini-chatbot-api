@@ -1,17 +1,18 @@
 import { serve } from "bun";
 import { commonResponseHeaders } from "./constants";
 import { handleChat } from "./handlers/handleChat";
+
 import index from "./index.html";
+import productionHtml from '../dist/index.html';
 
 const BASE_PATH = "./public";
 
 const server = serve({
 	routes: {
-		"/": index,
+		"/": process.env.NODE_ENV === "production" ? productionHtml : index,
 		"/api/chat": {
 			async POST(req) {
 				const headers = new Headers(commonResponseHeaders);
-
 				return handleChat(req, headers);
 			},
 		},
