@@ -9,9 +9,7 @@
 		"dev": "bun --hot src/index.tsx",
 		"start": "NODE_ENV=production bun src/index.tsx",
 		"build": "bun run build.ts",
-		"lint": "biome check --write .",
-		"deploy": "bun run deploy.js",
-		"deploy:prod": "bun run deploy.js --prod"
+		"lint": "biome check --write ."
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.24.1",
